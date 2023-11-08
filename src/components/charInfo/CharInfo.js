@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import PropTypes from 'prop-types';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
@@ -92,6 +93,7 @@ const CharInfo = (props) => {
             {spinner}
             {content}
         </div>
+        
     )
 
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import PropTypes from 'prop-types';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -95,7 +96,9 @@ const CharList = (props) => {
             if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
                 imgStyle = { 'objectFit': 'unset' };
             }
+            
             return (
+                <CSSTransition key={item.id} timeout={500} classNames="char__item">
                 <li
                     className="char__item"
                     tabIndex={0}
@@ -114,6 +117,7 @@ const CharList = (props) => {
                     <img src={item.thumbnail} alt={item.name} style={imgStyle} />
                     <div className="char__name">{item.name}</div>
                 </li>
+                </CSSTransition>
             )
         });
         // Добавлен доп фильтр на удаление дубликатов в items, без понятия почему они там образуются.
@@ -123,9 +127,10 @@ const CharList = (props) => {
         return (
             <ul
                 className="char__grid">
+                <TransitionGroup component={null}>
                 {newItems}
+                </TransitionGroup>
             </ul>
-
         )
     }
 
@@ -136,7 +141,13 @@ const CharList = (props) => {
 
     const errorMessage = error ? <ErrorMessage /> : null;
     const spinner = loading && !newItemLoading ? <Spinner /> : null;
+    // if (loading) {
+    //     import('./someFunck')
+    //             .then(obj => obj.logger())
+    //             .catch();
+    // }
     // const content = !(loading || error) ? items : null;
+    
     return (
         <div className="char__list">
             {errorMessage}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef} from 'react';
+import {Link} from 'react-router-dom';
 import './comicsList.scss';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -60,9 +61,11 @@ const ComicsList = () => {
                             focusOnItem(index);
                         }
                     }}>
-                    <img className="comics__item-img" src={item.thumbnail} alt={item.name} style={imgStyle} />
-                    <div className="comics__item-name">{item.title}</div>
-                    <div className="comics__item-price">{item.price}</div>
+                    <Link to={`/comics/${item.id}`}>
+                        <img className="comics__item-img" src={item.thumbnail} alt={item.name} style={imgStyle} />
+                        <div className="comics__item-name">{item.title}</div>
+                        <div className="comics__item-price">{item.price}</div>
+                    </Link>
                 </li>
             )
         });
