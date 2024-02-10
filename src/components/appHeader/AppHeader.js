@@ -11,12 +11,15 @@ const AppHeader = () => {
             </h1>
             <nav className="app__menu">
                 <ul>
-                    <li><NavLink 
+                    <li>
+                        <NavLink 
                         end 
                         // activeStyle={{'color': 'green'}} 
                         style={({ isActive }) => ({color: isActive ? 'green': 'inherit' })}
-                        to="/marvel">Characters</NavLink></li>
-                    /
+                        to="/marvel">Characters
+                        </NavLink>
+                    </li>
+
                     <li><NavLink 
                         end 
                         style={({ isActive }) => ({color: isActive ? 'green': 'inherit' })} 
