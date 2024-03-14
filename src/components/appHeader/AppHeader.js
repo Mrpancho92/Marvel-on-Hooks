@@ -16,7 +16,7 @@ const AppHeader = () => {
                         end 
                         // activeStyle={{'color': 'green'}} 
                         style={({ isActive }) => ({color: isActive ? 'green': 'inherit' })}
-                        to="/marvel">Characters
+                        to="/Marvel-on-Hooks">Characters
                         </NavLink>
                     </li>
 
